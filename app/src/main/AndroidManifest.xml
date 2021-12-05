@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.mechware">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MechWare">
+        <activity android:name=".hub_and_blade_inspections_form"></activity>
+        <activity android:name=".propeller_record_form" />
+        <activity android:name=".propeller_logbook" />
+        <activity android:name=".description_engine_form" />
+        <activity android:name=".registered_owner_record_form" />
+        <activity android:name=".engine_record_form" />
+        <activity android:name=".engine_logbook" />
+        <activity android:name=".equipment_form" />
+        <activity android:name=".madatory_service_form" />
+        <activity android:name=".airworthiness_form" />
+        <activity android:name=".reference_form" />
+        <activity android:name=".descriptions_form" />
+        <activity android:name=".aircraft_form1_form" />
+        <activity android:name=".aircraft_form" />
+        <activity android:name=".registration_form_2" />
+        <activity android:name=".aircraft_logbook" />
+        <activity android:name=".registration_form_1" />
+        <activity android:name=".home_page" />
+        <activity android:name=".login_page" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

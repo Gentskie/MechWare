@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    tools:context=".registration_form_2">
+
+    <TextView
+        android:id="@+id/layout_background2"
+        android:layout_width="match_parent"
+        android:layout_height="588dp"
+        android:layout_marginTop="288dp"
+        android:background="@drawable/rounded_corners"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/password_confirm_editText"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="238dp"
+        android:background="@drawable/text_coners"
+        android:ems="10"
+        android:hint="password@123"
+        android:inputType="textPassword"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/layout_background2"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="@+id/layout_background2"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="206dp"
+        android:text="Password"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/layout_background2"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="126dp"
+        android:layout_marginLeft="1dp"
+        android:text="Password"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/layout_background2"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginLeft="1dp"
+        android:text="Username"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/layout_background2"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+    <EditText
+        android:id="@+id/Username_EditTxt"
+        android:layout_width="325dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="1dp"
+        android:background="@drawable/text_coners"
+        android:ems="10"
+        android:hint="J.DelaCruz0001"
+        android:inputType="textPersonName"
+        android:paddingLeft="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/layout_background2"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="@+id/layout_background2"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+    <EditText
+        android:id="@+id/password_editText"
+        android:layout_width="322dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="155dp"
+        android:background="@drawable/text_coners"
+        android:ems="10"
+        android:hint="password@123"
+        android:paddingLeft="15dp"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+    <RadioGroup
+        android:layout_width="325dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="290dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" >
+            <RadioButton
+                android:id="@+id/mechanic_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mechanic"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/owner_radio_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Owner"
+                android:textColor="@color/white" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="340dp"
+        android:layout_marginRight="10dp"
+        android:text="Register"
+        android:backgroundTint="@color/orange_ish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/layout_background2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
