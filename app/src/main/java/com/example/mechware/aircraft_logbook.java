@@ -89,7 +89,7 @@ public class aircraft_logbook extends AppCompatActivity {
         mandatory_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pass = new Intent(getApplicationContext(),madatory_service_form.class);
+                Intent pass = new Intent(getApplicationContext(), mandatory_service_form.class);
                 startActivity(pass);
             }
         });

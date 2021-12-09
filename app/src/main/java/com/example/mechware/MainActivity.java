@@ -22,15 +22,17 @@ public class MainActivity extends AppCompatActivity {
         owner_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pass = new Intent(getApplicationContext(),login_page.class);
-                startActivity(pass);
+                Intent intent = new Intent(getApplicationContext(),login_page.class);
+                intent.putExtra("user_type", "owner");
+                startActivity(intent);
             }
         });
         mechanic_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pass = new Intent(getApplicationContext(),login_page.class);
-                startActivity(pass);
+                Intent intent = new Intent(getApplicationContext(),login_page.class);
+                intent.putExtra("user_type", "mechanic");
+                startActivity(intent);
             }
         });
     }

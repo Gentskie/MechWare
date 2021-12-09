@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "272207055491",
+    "firebase_url": "https://mechware-554c8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "mechware-554c8",
+    "storage_bucket": "mechware-554c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:272207055491:android:6eff9855a454a92ecde9b6",
+        "android_client_info": {
+          "package_name": "com.example.mechware"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "272207055491-63r47rgklo1i9l3oeh0uvbmsr46gt8jr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLICvQckjZOsPRW4sYvrrgF9RbM3ArcgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "272207055491-63r47rgklo1i9l3oeh0uvbmsr46gt8jr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

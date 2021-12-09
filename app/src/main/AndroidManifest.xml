@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MechWare">
-        <activity android:name=".hub_and_blade_inspections_form"></activity>
+        <activity android:name=".Signup_form"
+            android:configChanges="orientation|keyboardHidden"></activity>
+        <activity android:name=".hub_and_blade_inspections_form" />
         <activity android:name=".propeller_record_form" />
         <activity android:name=".propeller_logbook" />
         <activity android:name=".description_engine_form" />
@@ -17,7 +19,7 @@
         <activity android:name=".engine_record_form" />
         <activity android:name=".engine_logbook" />
         <activity android:name=".equipment_form" />
-        <activity android:name=".madatory_service_form" />
+        <activity android:name=".mandatory_service_form" />
         <activity android:name=".airworthiness_form" />
         <activity android:name=".reference_form" />
         <activity android:name=".descriptions_form" />
@@ -27,7 +29,8 @@
         <activity android:name=".aircraft_logbook" />
         <activity android:name=".registration_form_1" />
         <activity android:name=".home_page" />
-        <activity android:name=".login_page" />
+        <activity android:name=".login_page"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

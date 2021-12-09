@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class madatory_service_form extends AppCompatActivity {
+public class mandatory_service_form extends AppCompatActivity {
 
     TextView date_editText, total_time_in_service_editText, mandatory_editText;
     Button clear_btn, next_btn;
