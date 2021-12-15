@@ -18,7 +18,7 @@ import android.widget.TextView;
 public class home_page extends AppCompatActivity {
 
     TextView bold_text, back_layout;
-    ImageView logbook_btn;
+    ImageView logbook_btn, pitot_btn, ndt_btn;
     CardView card_view;
     Button aircraft_btn, propeller_btn, engine_btn;
     @Override
@@ -86,6 +86,25 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),engine_logbook.class);
+                startActivity(pass);
+            }
+        });
+
+        // adding action to pitot image view
+        pitot_btn = (ImageView) findViewById(R.id.pitot_btn);
+        pitot_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pass = new Intent(getApplicationContext(),pitot_form.class);
+                startActivity(pass);
+            }
+        });
+        // adding action to ndt image view
+        ndt_btn = (ImageView) findViewById(R.id.ndt_btn);
+        ndt_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pass = new Intent(getApplicationContext(),ndt_form.class);
                 startActivity(pass);
             }
         });
