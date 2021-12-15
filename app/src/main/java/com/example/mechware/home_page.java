@@ -15,16 +15,33 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class home_page extends AppCompatActivity {
 
     TextView bold_text, back_layout;
     ImageView logbook_btn;
     CardView card_view;
     Button aircraft_btn, propeller_btn, engine_btn;
+
+    ImageView menu_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        //temporary logout button
+        menu_btn = findViewById(R.id.menu_btn);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getApplicationContext(), ChooseUser.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // changing lorem text to bold
         bold_text = (TextView) findViewById(R.id.bold_txt);
@@ -37,7 +54,7 @@ public class home_page extends AppCompatActivity {
         card_view = (CardView) findViewById(R.id.card_view);
         back_layout = (TextView) findViewById(R.id.back_layout);
 
-        // seeting cardview and back_layout invisible
+        // setting cardview and back_layout invisible
         card_view.setVisibility(View.INVISIBLE);
         back_layout.setVisibility(View.INVISIBLE);
 
@@ -89,5 +106,6 @@ public class home_page extends AppCompatActivity {
                 startActivity(pass);
             }
         });
+
     }
 }

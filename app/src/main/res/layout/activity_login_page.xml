@@ -7,6 +7,29 @@
     android:background="@drawable/background1"
     tools:context=".login_page">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_background"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintWidth_percent="0.5"
+        android:background="@color/black">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/logo_mechware"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHeight_percent="0.8"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <TextView
         android:id="@+id/layout_background"
         android:layout_width="match_parent"
@@ -82,28 +105,5 @@
         app:layout_constraintStart_toStartOf="@+id/layout_background"
         app:layout_constraintTop_toTopOf="@+id/layout_background" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
-        android:text="Not registered yet? Click here to"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.208"
-        app:layout_constraintStart_toStartOf="@+id/layout_background"
-        app:layout_constraintTop_toTopOf="@+id/layout_background" />
-
-    <TextView
-        android:id="@+id/signup_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="328dp"
-        android:text="Sign up"
-        android:textColor="@color/orange_ish"
-        app:layout_constraintEnd_toEndOf="@+id/layout_background"
-        app:layout_constraintHorizontal_bias="0.761"
-        app:layout_constraintStart_toStartOf="@+id/layout_background"
-        app:layout_constraintTop_toTopOf="@+id/layout_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

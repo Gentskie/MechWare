@@ -17,4 +17,6 @@
     <color name="orange_ish">#F4AC45</color>
 
     <color name="Transparent">#00FFFFFF</color>
+
+    <color name="semi_transparent">#81000000</color>
 </resources>

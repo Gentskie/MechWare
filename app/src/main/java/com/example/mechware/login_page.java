@@ -29,7 +29,6 @@ import com.google.firebase.database.annotations.NotNull;
 
 public class login_page extends AppCompatActivity {
 
-    TextView signup;
     Button login_btn;
 
     EditText input_email, input_password;
@@ -45,7 +44,6 @@ public class login_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        signup = (TextView) findViewById(R.id.signup_btn);
         login_btn = (Button) findViewById(R.id.login_btn);
 
         input_email = findViewById(R.id.email_editTxt);
@@ -97,13 +95,6 @@ public class login_page extends AppCompatActivity {
         });
 
         // start of activity instances
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent pass = new Intent(getApplicationContext(),Signup_form.class);
-                startActivity(pass);
-            }
-        });
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
