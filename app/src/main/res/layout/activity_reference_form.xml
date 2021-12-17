@@ -111,7 +111,7 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="00:00:00"
-                        android:inputType="date" />
+                        android:inputType="time" />
 
                 </LinearLayout>
 

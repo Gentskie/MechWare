@@ -26,11 +26,14 @@ public class home_page extends AppCompatActivity {
 
     ImageView menu_btn;
 
+    String user_type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        user_type = getIntent().getStringExtra("user_type");
         //temporary logout button
         menu_btn = findViewById(R.id.menu_btn);
         menu_btn.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +76,7 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ndt_form.class);
+                intent.putExtra("user_type", user_type);
                 startActivity(intent);
             }
         });
@@ -82,6 +86,7 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), pitot_form.class);
+                intent.putExtra("user_type", user_type);
                 startActivity(intent);
             }
         });
@@ -101,6 +106,7 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),aircraft_logbook.class);
+                pass.putExtra("user_type", user_type);
                 startActivity(pass);
             }
         });
@@ -111,6 +117,7 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),propeller_logbook.class);
+                pass.putExtra("user_type", user_type);
                 startActivity(pass);
             }
         });
@@ -121,6 +128,7 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),engine_logbook.class);
+                pass.putExtra("user_type", user_type);
                 startActivity(pass);
             }
         });

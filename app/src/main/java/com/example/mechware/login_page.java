@@ -138,6 +138,7 @@ public class login_page extends AppCompatActivity {
                                 uid = userTypeRef.child(user_id);
 
                                 Intent intent = new Intent(getApplicationContext(),home_page.class);
+                                intent.putExtra("user_type", user_type);
                                 startActivity(intent);
                                 finish();
                             }
