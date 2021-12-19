@@ -77,7 +77,7 @@ public class Signup_form extends AppCompatActivity {
 
         UsersHelper usersHelper = new UsersHelper();
 
-        Intent login = new Intent(getApplicationContext(), login_page.class);
+        Intent choose_User = new Intent(getApplicationContext(), ChooseUser.class);
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,12 +122,14 @@ public class Signup_form extends AppCompatActivity {
                                     if(task.isSuccessful()){
                                         if(mechanic.isChecked()) {
                                             mechanicRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(usersHelper);
-                                            startActivity(login);
+                                            Toast.makeText(Signup_form.this, "Signed up successfully!", Toast.LENGTH_SHORT).show();
+                                            startActivity(choose_User);
                                             finish();
                                         }
                                         else if(owner.isChecked()){
                                             ownerRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(usersHelper);
-                                            startActivity(login);
+                                            Toast.makeText(Signup_form.this, "Signed up successfully!", Toast.LENGTH_SHORT).show();
+                                            startActivity(choose_User);
                                             finish();
                                         }
                                         else{
