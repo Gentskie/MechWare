@@ -32,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/aircraft_layout"
+                    android:id="@+id/dropdownLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="15dp"
@@ -40,11 +40,10 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                     android:layout_weight="1"
                     app:boxStrokeColor="@color/black"
-                    android:textColorHint="@color/maroon"
-                    android:hint="Select an Aircraft">
+                    android:textColorHint="@color/maroon">
 
                     <AutoCompleteTextView
-                        android:id="@+id/input_aircraft"
+                        android:id="@+id/dropdown_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false" />

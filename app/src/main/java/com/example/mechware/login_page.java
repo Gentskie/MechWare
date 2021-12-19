@@ -33,11 +33,15 @@ public class login_page extends AppCompatActivity {
 
     EditText input_email, input_password;
 
+    TextView userLabel;
+
     FirebaseAuth mAuth;
     FirebaseDatabase rootNode;
     DatabaseReference userTypeRef, userRef, uid;
+
     String user_type;
     String user_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +61,15 @@ public class login_page extends AppCompatActivity {
 
         user_type = getIntent().getStringExtra("user_type");
 
-        //if maayos na yung HUD/UI/SOMETHING pwede natin malagay to.
-/*
+        userLabel = findViewById(R.id.userLabel);
         if(user_type.equalsIgnoreCase("mechanic")){
-            user_textField_label.setText("MECHANIC");
-            userLoginTitle.setText("Mechanic Login");
+            userLabel.setText("MECHANIC");
         }
         else if (user_type.equalsIgnoreCase("owner")){
-            user_textField_label.setText("OWNER");
-            userLoginTitle.setText("Owner Login");
-        }
-*/
+            userLabel.setText("OWNER");
 
-        //kapag pinindot yung 'enter' key dun sa softkeyboard mag pproceed sya sa login hindi na need pindutin yung UI Button.
+        }
+
         input_email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

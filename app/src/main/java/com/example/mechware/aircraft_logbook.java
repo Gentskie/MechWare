@@ -14,7 +14,6 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mechware.Helper.AircraftRecordHelper;
-import com.example.mechware.Helper.SelectAircraftHelper;
+import com.example.mechware.Helper.DropdownHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -34,7 +33,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,26 +42,27 @@ public class aircraft_logbook extends AppCompatActivity {
     Button aircraft_record_btn, form_1_btn, description_btn, reference_btn, airworthiness_btn, mandatory_btn, equipment_btn;
     ImageView menu_btn;
 
+    TextInputLayout dropdownLayout;
+
     String user_type;
 
-    Dialog select_aircraft;
+    Dialog dropdown_dialog;
     AppCompatButton confirm, cancel;
-    AutoCompleteTextView aircraft_input;
+    AutoCompleteTextView dropdown_input;
 
     FirebaseDatabase rootNode;
     DatabaseReference aircraftRef;
     FirebaseAuth mAuth;
 
     //testing variable, possible changes here
-    ArrayList<String> al_aircraft_records;
+    ArrayList<String> al_records;
 
-    List<SelectAircraftHelper> selectAircraft = new ArrayList<>();
+    List<DropdownHelper> list_of_items = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_aircraft_logbook);
-
 
         user_type = getIntent().getStringExtra("user_type");
 
@@ -72,7 +71,10 @@ public class aircraft_logbook extends AppCompatActivity {
         rootNode = FirebaseDatabase.getInstance();
         aircraftRef = rootNode.getReference("aircraft_records");
 
-        setUpAircraftDropdown();
+        setUpDropdown();
+
+        //initialize select aircraft dialog
+        dropdown_dialog = new Dialog(this);
 
         // changing lorem text to bold
         textView6 = (TextView) findViewById(R.id.textView6);
@@ -93,8 +95,6 @@ public class aircraft_logbook extends AppCompatActivity {
             }
         });
 
-        //initialize select aircraft dialog
-        select_aircraft = new Dialog(this);
 
         // adding action to buttons
         // Aircraft Records
@@ -111,14 +111,14 @@ public class aircraft_logbook extends AppCompatActivity {
         form_1_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                selectAircraft(aircraft_form1_form.class);
+                dropdownDialogFunction(aircraft_form1_form.class);
             }
         });
         description_btn = (Button) findViewById(R.id.description_btn);
         description_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                selectAircraft(descriptions_form.class);
+                dropdownDialogFunction(descriptions_form.class);
             }
         });
 
@@ -126,21 +126,21 @@ public class aircraft_logbook extends AppCompatActivity {
         reference_btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                selectAircraft(reference_form.class);
+                dropdownDialogFunction(reference_form.class);
             }
         });
         airworthiness_btn = (Button) findViewById(R.id.airworthiness_btn);
         airworthiness_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectAircraft(airworthiness_form.class);
+                dropdownDialogFunction(airworthiness_form.class);
             }
         });
         mandatory_btn = (Button) findViewById(R.id.mandatory_btn);
         mandatory_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectAircraft(mandatory_service_form.class);
+                dropdownDialogFunction(mandatory_service_form.class);
             }
         });
 
@@ -148,28 +148,31 @@ public class aircraft_logbook extends AppCompatActivity {
         equipment_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectAircraft(equipment_form.class);
+                dropdownDialogFunction(equipment_form.class);
             }
         });
     }
 
-    public void selectAircraft(Class FormClass){
+    public void dropdownDialogFunction(Class FormClass){
 
         //initialize pop up dialog
-        select_aircraft.setContentView(R.layout.select_aircraft_pop_up_layout);
-        confirm = select_aircraft.findViewById(R.id.btn_confirm);
-        cancel = select_aircraft.findViewById(R.id.btn_cancel);
-        aircraft_input = select_aircraft.findViewById(R.id.input_aircraft);
+        dropdown_dialog.setContentView(R.layout.dropdown_dialog_layout);
+        confirm = dropdown_dialog.findViewById(R.id.btn_confirm);
+        cancel = dropdown_dialog.findViewById(R.id.btn_cancel);
+        dropdown_input = dropdown_dialog.findViewById(R.id.dropdown_input);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.drop_down, al_aircraft_records);
-        aircraft_input.setAdapter(adapter);
-        aircraft_input.setThreshold(1);
+        dropdownLayout = dropdown_dialog.findViewById(R.id.dropdownLayout);
+        dropdownLayout.setHint("Select an Aircraft");
 
-        aircraft_input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.drop_down, al_records);
+        dropdown_input.setAdapter(adapter);
+        dropdown_input.setThreshold(1);
+
+        dropdown_input.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String ac_id = selectAircraft.get(position).getAircraft_id();
+                String ac_id = list_of_items.get(position).getIds();
 //                String manufacturer = selectAircraft.get(position).getAircraft_info();
 //                Log.i("SELECTED", ac_id + "/ " + manufacturer);
 
@@ -188,15 +191,15 @@ public class aircraft_logbook extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                select_aircraft.dismiss();
+                dropdown_dialog.dismiss();
             }
         });
 
-        select_aircraft.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        select_aircraft.show();
+        dropdown_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dropdown_dialog.show();
     }
 
-    public void setUpAircraftDropdown(){
+    public void setUpDropdown(){
 
         aircraftRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -209,16 +212,16 @@ public class aircraft_logbook extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                             AircraftRecordHelper aircraftRecordHelper = snapshot.getValue(AircraftRecordHelper.class);
-                            SelectAircraftHelper selectAircraftHelper = new SelectAircraftHelper();
-                            selectAircraftHelper.setAircraft_info(aircraftRecordHelper.getManufacturer() + "/" + aircraftRecordHelper.getModel() + "/" + aircraftRecordHelper.getSerial());
-                            selectAircraftHelper.setAircraft_id(aircraft_id);
-                            selectAircraft.add(selectAircraftHelper);
+                            DropdownHelper dropdownHelper = new DropdownHelper();
+                            dropdownHelper.setInformations(aircraftRecordHelper.getManufacturer() + "/" + aircraftRecordHelper.getModel() + "/" + aircraftRecordHelper.getSerial());
+                            dropdownHelper.setIds(aircraft_id);
+                            list_of_items.add(dropdownHelper);
 
-                            al_aircraft_records = new ArrayList<>();
+                            al_records = new ArrayList<>();
 //                            Log.i("MANUFACTURER",   " "+snapshot.child("manufacturer").getValue());
-                            for(int i = 0; i < selectAircraft.size(); i++){
+                            for(int i = 0; i < list_of_items.size(); i++){
 //                                Log.i("INFO", ""+selectAircraft.get(i).getAircraft_info());
-                                al_aircraft_records.add(selectAircraft.get(i).getAircraft_info());
+                                al_records.add(list_of_items.get(i).getInformations());
                             }
 
                         }

@@ -40,7 +40,7 @@ public class Signup_form extends AppCompatActivity {
 
     RadioButton mechanic, owner;
 
-    RadioGroup user_type;
+    RadioGroup userType_RG;
 
     FirebaseDatabase rootNode;
     DatabaseReference usersRef, mechanicRef, ownerRef;
@@ -65,7 +65,7 @@ public class Signup_form extends AppCompatActivity {
 
         show_hide_pass = findViewById(R.id.show_hide_pass);
 
-        user_type = findViewById(R.id.user_type);
+        userType_RG = findViewById(R.id.user_type);
         mechanic = findViewById(R.id.mechanic_radio_btn);
         owner = findViewById(R.id.owner_radio_btn);
 

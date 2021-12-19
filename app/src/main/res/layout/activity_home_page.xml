@@ -7,6 +7,8 @@
     android:background="@drawable/homepage"
     tools:context=".home_page">
 
+
+    <!-- TEMP ICON -->
     <ImageView
         android:id="@+id/menu_btn"
         android:layout_width="38dp"
@@ -17,13 +19,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
-        app:srcCompat="@drawable/hamburger_icon" />
+        app:srcCompat="@drawable/icon_signout" />
 
+    <!-- TEMP Text -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Home"
+        android:text="Logout"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
