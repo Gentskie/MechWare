@@ -176,7 +176,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Instrument Name"
-                        android:inputType="date"
+                        android:inputType="textPersonName"
                         />
 
                 </LinearLayout>
@@ -213,20 +213,20 @@
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
                         android:hint="Part No"
-                        android:inputType="date"
+                        android:inputType="number"
                         />
                     <EditText
                         android:id="@+id/serial_no_editText"
                         android:layout_width="125dp"
                         android:layout_height="wrap_content"
                         android:hint="Serial No."
-                        android:inputType="textPersonName"/>
+                        android:inputType="number"/>
                     <EditText
                         android:id="@+id/model_editText"
                         android:layout_width="130dp"
                         android:layout_height="wrap_content"
                         android:hint="Model No."
-                        android:inputType="textPersonName"/>
+                        android:inputType="number"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -345,6 +345,7 @@
                     android:orientation="horizontal">
 
                     <RadioGroup
+                        android:id="@+id/calibration_result_rg"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" >
 
@@ -376,6 +377,7 @@
                     </RadioGroup>
 
                     <RadioGroup
+                        android:id="@+id/judgement_rg"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent" >
 
