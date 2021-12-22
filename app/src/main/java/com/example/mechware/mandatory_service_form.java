@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class mandatory_service_form extends AppCompatActivity {
 
-    TextView date_editText, total_time_in_service_editText, mandatory_editText;
+    EditText date_editText, total_time_in_service_editText, mandatory_editText;
     Button clear_btn, submit_btn;
 
     FirebaseDatabase rootNode;

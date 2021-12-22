@@ -12,63 +12,92 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MechWare">
-        <activity android:name=".pitot_form"></activity>
+        <activity android:name=".pitot_record_view"></activity>
+        <activity android:name=".ndt_record_view" />
+        <activity android:name=".hub_and_blade_record_view" />
+        <activity android:name=".propeller_record_view" />
+        <activity android:name=".registered_owner_record_view" />
+        <activity android:name=".engine_record_record_view" />
+        <activity android:name=".equipment_record_view" />
+        <activity android:name=".mandatory_record_view" />
+        <activity android:name=".airworthiness_record_view" />
+        <activity android:name=".reference_record_view" />
+        <activity android:name=".description_record_view" />
+        <activity android:name=".form_1_record_view" />
+        <activity android:name=".aircratf_record_view" />
+        <activity android:name=".View_records" />
+        <activity android:name=".pitot_form" />
         <activity android:name=".ndt_form" />
         <activity android:name=".ChooseUser" />
         <activity
             android:name=".Signup_form"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
-        <activity android:name=".hub_and_blade_inspections_form"
+        <activity
+            android:name=".hub_and_blade_inspections_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".propeller_record_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".propeller_record_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".propeller_logbook"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".propeller_logbook"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".description_engine_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".description_engine_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".registered_owner_record_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".registered_owner_record_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".engine_record_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".engine_record_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".engine_logbook"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".engine_logbook"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".equipment_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".equipment_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".mandatory_service_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".mandatory_service_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".airworthiness_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".airworthiness_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".reference_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".reference_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity android:name=".descriptions_form" />
-        <activity android:name=".aircraft_form1_form"
+        <activity
+            android:name=".aircraft_form1_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".aircraft_form"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".aircraft_form"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".aircraft_logbook"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".aircraft_logbook"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".home_page"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".home_page"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".login_page"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:configChanges="orientation|keyboardHidden"

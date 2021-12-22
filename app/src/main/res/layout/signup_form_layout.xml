@@ -7,6 +7,15 @@
     android:background="@drawable/background1"
     tools:context=".Signup_form">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black.8opacity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -15,8 +24,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/form_layout"
         app:layout_constraintHeight_percent="0.2"
-        app:layout_constraintWidth_percent="0.5"
-        android:background="@color/black">
+        app:layout_constraintWidth_percent="0.5">
 
         <ImageView
             android:layout_width="match_parent"

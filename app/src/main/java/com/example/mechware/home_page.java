@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class home_page extends AppCompatActivity {
 
     TextView bold_text, back_layout;
-    ImageView logbook_btn, ndt_btn, pitot_btn;
+    ImageView logbook_btn, ndt_btn, pitot_btn, add_btn;
     CardView card_view;
     Button aircraft_btn, propeller_btn, engine_btn;
 
@@ -129,6 +129,17 @@ public class home_page extends AppCompatActivity {
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),engine_logbook.class);
                 pass.putExtra("user_type", user_type);
+                startActivity(pass);
+            }
+        });
+
+        // adding actions to add btn
+        add_btn = (ImageView) findViewById(R.id.add_btn);
+        add_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pass = new Intent(getApplicationContext(),View_records.class);
+//                pass.putExtra("user_type", user_type);
                 startActivity(pass);
             }
         });

@@ -13,6 +13,7 @@
     <color name="blue_ish">#3949AB</color>
     <color name="maroon">#6B0504</color>
     <color name="maroon.8opacity">#cc6B0504</color>
+    <color name="black.8opacity">#b3000000</color>
     <color name="white.8opacity">#ccffffff</color>
     <color name="orange_ish">#F4AC45</color>
 

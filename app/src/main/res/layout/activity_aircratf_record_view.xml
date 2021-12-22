@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/homepage"
-    tools:context=".ndt_form">
+    tools:context=".aircratf_record_view">
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Non Destructive Testing"
+        android:text="Aircraft Record"
         android:textColor="@color/white"
-        android:textSize="25dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.143" />
+        app:layout_constraintVertical_bias="0.139" />
 
     <ImageView
         android:id="@+id/menu_btn2"
@@ -37,16 +37,14 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:text="Logbook > Non Destructive Testing"
+        android:text="Home > View Records > Aircraft Records"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+        app:layout_constraintVertical_bias="0.052" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -54,11 +52,12 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintBottom_toTopOf="@+id/buttons_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15">
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -76,135 +75,310 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="6dp"
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Non Destructive Test Inspection Report"
-                        android:gravity="center"
-                        android:textStyle="bold"
+                        android:text="Manufacturer"
                         android:textColor="@color/black" />
 
+                    <EditText
+                        android:id="@+id/manufacturer_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Juan Dela Cruz"
+                        android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="6dp"
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="AMO CERTIFICATE NO. 155-16"
-                        android:gravity="center"
-                        android:textStyle="bold"
+                        android:text="Model"
                         android:textColor="@color/black" />
 
+                    <EditText
+                        android:id="@+id/model_editText"
+                        android:layout_width="70dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Airbus A350"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/serial_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="7T-WHM"
+                        android:inputType="textPersonName" />
+
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Customer Name" />
+                        android:text="Registration No."
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/customer_name_editText"
+                        android:id="@+id/registration_no_editText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Customer Name"
+                        android:hint="N1234Z"
+                        android:inputType="textPersonName" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Date of Manufacture"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/date_of_manufacture_editTextDate"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="mm/dd/yyyy"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingTop="20dp"
+                        android:text="Engines Currently Installed"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView28"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Manufacturer"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/engine_manufacturer_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="Yamaha"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Work Order No" />
+                        android:text="Model"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/work_order_no_editText"
-                        android:layout_width="200dp"
+                        android:id="@+id/engine_model_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Work Order No."
+                        android:hint="R25-E4"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/engine_serial_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="880254"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Address " />
+                        android:text="Manufacturer"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/address_editText"
-                        android:layout_width="165dp"
+                        android:id="@+id/engine_manufacturer_2_editText"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Address"
+                        android:hint="Yamaha"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView37"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Date " />
+                        android:text="Model"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/date_editText"
-                        android:layout_width="145dp"
+                        android:id="@+id/engine_model_2_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="Date"
+                        android:hint="R25-E4"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/engine_serial_2_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="880254"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/textView34"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:paddingTop="20dp"
+                        android:text="Propeller(s) Currently Installed"
                         android:textColor="@color/black"
-                        android:text="A/C Type" />
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Manufacturer"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/ac_type_editText"
-                        android:layout_width="165dp"
+                        android:id="@+id/propeller_manufacturer_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="A/C Type"
+                        android:hint="example"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Model"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/propeller_manufacturer_model_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="example"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -214,52 +388,72 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="A/C Reg #" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="YR Model" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="A/C Serial #" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                        android:text="HUB Model"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/ac_reg_no_editText"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/HUB_model_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="A/C Reg #"
+                        android:hint="sample"
                         android:inputType="textPersonName" />
-                    <EditText
-                        android:id="@+id/yr_model_editText"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/propeller_serial_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:ems="10"
-                        android:hint="YR Model"
+                        android:hint="sample"
+                        android:inputType="textPersonName" />0
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Blade Model"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/blade_model_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="sample"
                         android:inputType="textPersonName" />
-                    <EditText
-                        android:id="@+id/ac_serial_no_editText"
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/blade_model_serial_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:ems="10"
-                        android:hint="A/C Serial #"
+                        android:hint="sample"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -269,18 +463,35 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="A/C Total Time #" />
+                        android:text="Serial"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/ac_total_time_editText"
-                        android:layout_width="210dp"
+                        android:id="@+id/blade_model_serial_2_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:hint="A/C Total Time #"
+                        android:hint="sample"
+                        android:inputType="textPersonName" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/blade_model_serial_3_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="sample"
                         android:inputType="textPersonName" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -290,56 +501,35 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Part Nomenclature" />
+                        android:text="Blade Model"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/blade_model_2_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10"
+                        android:hint="sample"
+                        android:inputType="textPersonName" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Date Accomplish" />
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:text="Serial"
+                        android:textColor="@color/black" />
+
+                    <EditText
+                        android:id="@+id/blade_model_2_serial_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Place of Inspection" />
-
+                        android:ems="10"
+                        android:hint="sample"
+                        android:inputType="textPersonName" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
 
-
-                    <EditText
-                        android:id="@+id/part_nomenclature_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-                    <EditText
-                        android:id="@+id/date_accomplish_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-                    <EditText
-                        android:id="@+id/place_of_inspection_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -349,185 +539,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Purpose of Inspection:" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                        android:text="Serial"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/purpose_of_inspection_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
+                        android:id="@+id/blade_model_2_serial_2_editText"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                        android:hint="sample"
+                        android:inputType="textPersonName" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="NDT Method/Technic" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                        android:text="Serial"
+                        android:textColor="@color/black" />
 
                     <EditText
-                        android:id="@+id/ndt_method_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/blade_model_2_serial_3_editText"
+                        android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Reference Documents" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/reference_document_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
                         android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Equipment Used" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/equipment_used_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Findings" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/findings_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Inspected By:" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textColor="@color/black"
-                        android:text="Approved By:" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-
-                    <EditText
-                        android:id="@+id/inspected_by_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
-                    <EditText
-                        android:id="@+id/approved_by_editText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:gravity="start|top"
-                        android:hint="Type here ..."
-                        android:inputType="textMultiLine" />
+                        android:hint="sample"
+                        android:inputType="textPersonName" />
                 </LinearLayout>
 
 
