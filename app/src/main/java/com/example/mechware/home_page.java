@@ -15,12 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mechware.ViewRecords.view_records;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class home_page extends AppCompatActivity {
 
     TextView bold_text, back_layout;
-    ImageView logbook_btn, ndt_btn, pitot_btn;
+    ImageView logbook_btn, ndt_btn, pitot_btn, view_records_btn;
     CardView card_view;
     Button aircraft_btn, propeller_btn, engine_btn;
 
@@ -128,6 +129,16 @@ public class home_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),engine_logbook.class);
+                pass.putExtra("user_type", user_type);
+                startActivity(pass);
+            }
+        });
+
+        view_records_btn = findViewById(R.id.view_records_btn);
+        view_records_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pass = new Intent(getApplicationContext(), view_records.class);
                 pass.putExtra("user_type", user_type);
                 startActivity(pass);
             }

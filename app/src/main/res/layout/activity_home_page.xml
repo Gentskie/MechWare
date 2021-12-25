@@ -49,7 +49,7 @@
         app:layout_constraintVertical_bias="0.896" />
 
     <ImageView
-        android:id="@+id/add_btn"
+        android:id="@+id/view_records_btn"
         android:layout_width="match_parent"
         android:layout_height="158dp"
         android:layout_marginLeft="190dp"
@@ -62,7 +62,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.934"
-        app:srcCompat="@drawable/more" />
+        app:srcCompat="@drawable/documents" />
+
+    <TextView
+        android:id="@+id/view_records_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Records"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_records_btn"
+        app:layout_constraintEnd_toEndOf="@+id/view_records_btn"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/view_records_btn"
+        app:layout_constraintTop_toTopOf="@+id/view_records_btn"
+        app:layout_constraintVertical_bias="0.92" />
 
     <ImageView
         android:id="@+id/ndt_btn"

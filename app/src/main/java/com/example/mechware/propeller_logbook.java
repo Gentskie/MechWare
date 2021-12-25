@@ -78,6 +78,7 @@ public class propeller_logbook extends AppCompatActivity {
                 Intent pass = new Intent(getApplicationContext(),propeller_record_form.class);
                 pass.putExtra("user_type", user_type);
                 startActivity(pass);
+                finish();
             }
         });
 
@@ -111,7 +112,6 @@ public class propeller_logbook extends AppCompatActivity {
 
                 String propeller_id = list_of_items.get(position).getIds();
 
-
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -119,6 +119,7 @@ public class propeller_logbook extends AppCompatActivity {
                         pass.putExtra("user_type", user_type);
                         pass.putExtra("propeller_id", propeller_id);
                         startActivity(pass);
+                        finish();
                     }
                 });
             }
@@ -148,7 +149,7 @@ public class propeller_logbook extends AppCompatActivity {
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                             PropellerRecordHelper propellerRecordHelper = snapshot.getValue(PropellerRecordHelper.class);
                             DropdownHelper dropdownHelper = new DropdownHelper();
-                            dropdownHelper.setInformations(propellerRecordHelper.getManufacturer() + "/" + propellerRecordHelper.getModel() + "/" + propellerRecordHelper.getType());
+                            dropdownHelper.setInformations(propellerRecordHelper.getModel() + "/" + propellerRecordHelper.getType());
                             dropdownHelper.setIds(propeller_id);
                             list_of_items.add(dropdownHelper);
 

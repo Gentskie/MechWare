@@ -79,6 +79,7 @@ public class engine_logbook extends AppCompatActivity {
                 Intent pass = new Intent(getApplicationContext(),engine_record_form.class);
                 pass.putExtra("user_type", user_type);
                 startActivity(pass);
+                finish();
             }
         });
         registered_owner_record_btn.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +125,7 @@ public class engine_logbook extends AppCompatActivity {
                         pass.putExtra("user_type", user_type);
                         pass.putExtra("engine_id", engine_id);
                         startActivity(pass);
+                        finish();
                     }
                 });
             }
@@ -153,7 +155,7 @@ public class engine_logbook extends AppCompatActivity {
                         public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                             EngineRecordHelper engineRecordHelper = snapshot.getValue(EngineRecordHelper.class);
                             DropdownHelper dropdownHelper = new DropdownHelper();
-                            dropdownHelper.setInformations(engineRecordHelper.getManufacturer() + "/" + engineRecordHelper.getModel() + "/" + engineRecordHelper.getSerial());
+                            dropdownHelper.setInformations(engineRecordHelper.getModel() + "/" + engineRecordHelper.getSerial());
                             dropdownHelper.setIds(aircraft_id);
                             list_of_items.add(dropdownHelper);
 

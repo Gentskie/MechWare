@@ -93,7 +93,7 @@ public class engine_record_form extends AppCompatActivity {
 
 
                 Toast.makeText(engine_record_form.this, "Engine Record is successfully Added!", Toast.LENGTH_SHORT).show();
-                Intent pass = new Intent(getApplicationContext(),propeller_logbook.class);
+                Intent pass = new Intent(getApplicationContext(),engine_logbook.class);
                 pass.putExtra("user_type", user_type);
                 startActivity(pass);
                 finish();

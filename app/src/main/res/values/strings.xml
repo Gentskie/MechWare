@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MechWare</string>
+    <string name="nav_open">OPEN NAVIGATION</string>
+    <string name="nav_close">CLOSE NAVIGATION</string>
 </resources>
