@@ -48,7 +48,6 @@ public class view_reference_records extends AppCompatActivity implements Navigat
     NavigationView navigationView;
     Toolbar toolbar;
     boolean navigationStateOpen = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

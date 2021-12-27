@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -173,6 +174,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.nav_aircraft_record:
+                drawerLayout.closeDrawer(Gravity.LEFT, false);
                 user_type = getIntent().getStringExtra("user_type");
                 item_id = getIntent().getStringExtra("item_id");
                 parent_ref = getIntent().getStringExtra("parent_ref");
@@ -184,7 +186,6 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                 intent.putExtra("parent_ref", parent_ref);
                 intent.putExtra("action_type", action_type);
                 startActivity(intent);
-                finish();
                 break;
 
             case R.id.nav_form_1:
@@ -192,6 +193,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if(snapshot.hasChild("Form_1")){
+                            drawerLayout.closeDrawer(Gravity.LEFT, false);
                             user_type  = getIntent().getStringExtra("user_type");
                             item_id = getIntent().getStringExtra("item_id");
                             parent_ref = getIntent().getStringExtra("parent_ref");
@@ -203,7 +205,6 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                             intent.putExtra("parent_ref", parent_ref);
                             intent.putExtra("action_type", action_type);
                             startActivity(intent);
-                            finish();
                         }
                         else{
                             Toast.makeText(view_mandatory_records.this, "This Aircraft Record doesn't have Form 1 Record~", Toast.LENGTH_SHORT).show();
@@ -222,6 +223,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if(snapshot.hasChild("Description_of_Inspection")){
+                            drawerLayout.closeDrawer(Gravity.LEFT, false);
                             user_type  = getIntent().getStringExtra("user_type");
                             item_id = getIntent().getStringExtra("item_id");
                             parent_ref = getIntent().getStringExtra("parent_ref");
@@ -233,7 +235,6 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                             intent.putExtra("parent_ref", parent_ref);
                             intent.putExtra("action_type", action_type);
                             startActivity(intent);
-                            finish();
                         }
                         else{
                             Toast.makeText(view_mandatory_records.this, "This Aircraft Record doesn't have Reference of Major Repairs Record~", Toast.LENGTH_SHORT).show();
@@ -252,6 +253,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if(snapshot.hasChild("Airworthiness_Directive")){
+                            drawerLayout.closeDrawer(Gravity.LEFT, false);
                             user_type  = getIntent().getStringExtra("user_type");
                             item_id = getIntent().getStringExtra("item_id");
                             parent_ref = getIntent().getStringExtra("parent_ref");
@@ -263,7 +265,6 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                             intent.putExtra("parent_ref", parent_ref);
                             intent.putExtra("action_type", action_type);
                             startActivity(intent);
-                            finish();
                         }
                         else{
                             Toast.makeText(view_mandatory_records.this, "This Aircraft Record doesn't have Airworthiness Directive Record~", Toast.LENGTH_SHORT).show();
@@ -282,6 +283,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if(snapshot.hasChild("Reference_of_Major_Repairs")){
+                            drawerLayout.closeDrawer(Gravity.LEFT, false);
                             user_type  = getIntent().getStringExtra("user_type");
                             item_id = getIntent().getStringExtra("item_id");
                             parent_ref = getIntent().getStringExtra("parent_ref");
@@ -293,7 +295,6 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                             intent.putExtra("parent_ref", parent_ref);
                             intent.putExtra("action_type", action_type);
                             startActivity(intent);
-                            finish();
                         }
                         else{
                             Toast.makeText(view_mandatory_records.this, "This Aircraft Record doesn't have Reference of Major Repairs Record~", Toast.LENGTH_SHORT).show();
@@ -312,6 +313,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if(snapshot.hasChild("Equipment")){
+                            drawerLayout.closeDrawer(Gravity.LEFT, false);
                             user_type  = getIntent().getStringExtra("user_type");
                             item_id = getIntent().getStringExtra("item_id");
                             parent_ref = getIntent().getStringExtra("parent_ref");
@@ -323,7 +325,6 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
                             intent.putExtra("parent_ref", parent_ref);
                             intent.putExtra("action_type", action_type);
                             startActivity(intent);
-                            finish();
                         }
                         else{
                             Toast.makeText(view_mandatory_records.this, "This Aircraft Record doesn't have Any Equipment Record~", Toast.LENGTH_SHORT).show();
@@ -340,6 +341,7 @@ public class view_mandatory_records extends AppCompatActivity implements Navigat
             case R.id.nav_home_page:
                 user_type  = getIntent().getStringExtra("user_type");
 
+                drawerLayout.closeDrawer(Gravity.LEFT, false);
 
                 Intent intentHomePage = new Intent(getApplicationContext(), home_page.class);
                 intentHomePage.putExtra("user_type", user_type);

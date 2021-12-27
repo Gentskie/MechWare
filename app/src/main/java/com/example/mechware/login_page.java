@@ -13,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
 public class login_page extends AppCompatActivity {
+
+    ImageButton nav_back;
 
     Button login_btn;
 
@@ -52,6 +55,8 @@ public class login_page extends AppCompatActivity {
 
         input_email = findViewById(R.id.email_editTxt);
         input_password = findViewById(R.id.password_editTxt);
+
+        nav_back = findViewById(R.id.nav_back);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -99,6 +104,15 @@ public class login_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 ProceedLogin();
+            }
+        });
+
+        nav_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChooseUser.class);
+                startActivity(intent);
+                finish();
             }
         });
 

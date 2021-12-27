@@ -61,7 +61,7 @@
         android:id="@+id/signup_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CLCIK HERE TO CREATE AN ACCOUNT"
+        android:text="CLICK HERE TO CREATE AN ACCOUNT"
         android:textColor="@color/orange_ish"
         android:textStyle="bold"
         android:background="@color/semi_transparent"

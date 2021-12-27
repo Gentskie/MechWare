@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -26,6 +27,7 @@ import com.example.mechware.Helper.PitotHelper;
 import com.example.mechware.Helper.PropellerRecordHelper;
 import com.example.mechware.Helper.ViewRecordsHelper;
 import com.example.mechware.R;
+import com.example.mechware.home_page;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -62,6 +64,8 @@ public class view_records extends AppCompatActivity {
 
     String user_type;
 
+    ImageButton menu_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +75,17 @@ public class view_records extends AppCompatActivity {
 
         // initialization of Image view
         search_btn = (ImageView) findViewById(R.id.search_btn);
+
+        menu_btn = findViewById(R.id.menu_btn2);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), home_page.class);
+                intent.putExtra("user_type", user_type);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         // initialization of search edit text
         search_editText = (EditText) findViewById(R.id.search_editText);
@@ -434,6 +449,15 @@ public class view_records extends AppCompatActivity {
                 }
             }
         });
-
     }
+
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), home_page.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
+    }
+
 }

@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.mechware.Helper.DropdownHelper;
 import com.example.mechware.Helper.EngineRecordHelper;
@@ -50,6 +51,8 @@ public class engine_logbook extends AppCompatActivity {
 
     List<DropdownHelper> list_of_items = new ArrayList<>();
 
+    ImageButton menu_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,8 @@ public class engine_logbook extends AppCompatActivity {
 
         rootNode = FirebaseDatabase.getInstance();
         engineRef = rootNode.getReference("engine_records");
+
+        list_of_items.clear();
 
         setUpDropdown();
 
@@ -94,6 +99,26 @@ public class engine_logbook extends AppCompatActivity {
                 dropdownDialogFunction(description_engine_form.class);
             }
         });
+
+        menu_btn = findViewById(R.id.menu_btn);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), home_page.class);
+                intent.putExtra("user_type", user_type);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), home_page.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
     }
 
     public void dropdownDialogFunction(Class FormClass){
@@ -106,6 +131,8 @@ public class engine_logbook extends AppCompatActivity {
 
         dropdownLayout = dropdown_dialog.findViewById(R.id.dropdownLayout);
         dropdownLayout.setHint("Select an Engine");
+
+        dropdown_input.setAdapter(null);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.drop_down, al_records);
         dropdown_input.setAdapter(adapter);
@@ -121,6 +148,7 @@ public class engine_logbook extends AppCompatActivity {
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dropdown_dialog.dismiss();
                         Intent pass = new Intent(getApplicationContext(), FormClass);
                         pass.putExtra("user_type", user_type);
                         pass.putExtra("engine_id", engine_id);

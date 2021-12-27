@@ -1,6 +1,7 @@
 package com.example.mechware;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,11 +11,14 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.mechware.Helper.AircraftRecordHelper;
 import com.example.mechware.Helper.AircraftSubHelper.EngineCIHelper;
 import com.example.mechware.Helper.AircraftSubHelper.PropellerCIHelper;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,6 +36,8 @@ public class aircraft_form extends AppCompatActivity {
     FirebaseAuth mAuth;
 
     String user_type;
+
+    ImageButton menu_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +114,7 @@ public class aircraft_form extends AppCompatActivity {
                 propellerCIHelper.setPropeller_blade_model(blade_model_editText.getText().toString().trim());
                 propellerCIHelper.setPropeller_blade_model_serial_1(blade_model_serial_editText.getText().toString().trim());
                 propellerCIHelper.setPropeller_blade_model_serial_2(blade_model_serial_2_editText.getText().toString().trim());
-                propellerCIHelper.setPropeller_blade_model_serial_2(blade_model_serial_3_editText.getText().toString().trim());
+                propellerCIHelper.setPropeller_blade_model_serial_3(blade_model_serial_3_editText.getText().toString().trim());
                 propellerCIHelper.setPropeller_blade_model_2(blade_model_2_editText.getText().toString().trim());
                 propellerCIHelper.setPropeller_blade_model_2_serial_1(blade_model_2_serial_editText.getText().toString().trim());
                 propellerCIHelper.setPropeller_blade_model_2_serial_2(blade_model_2_serial_2_editText.getText().toString().trim());
@@ -160,6 +166,25 @@ public class aircraft_form extends AppCompatActivity {
             }
         });
 
+        menu_btn = findViewById(R.id.menu_btn2);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), aircraft_logbook.class);
+                intent.putExtra("user_type", user_type);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), aircraft_logbook.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
     }
 
     //Hide soft keyboard when touched the outside of the edit text.

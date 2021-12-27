@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,6 +30,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 
 public class Signup_form extends AppCompatActivity {
+
+    ImageButton nav_back;
 
     ConstraintLayout first_form_layout, second_form_layout;
 
@@ -68,6 +71,8 @@ public class Signup_form extends AppCompatActivity {
         userType_RG = findViewById(R.id.user_type);
         mechanic = findViewById(R.id.mechanic_radio_btn);
         owner = findViewById(R.id.owner_radio_btn);
+
+        nav_back = findViewById(R.id.nav_back);
 
         mAuth = FirebaseAuth.getInstance();
         rootNode = FirebaseDatabase.getInstance();
@@ -175,6 +180,15 @@ public class Signup_form extends AppCompatActivity {
                     password.setTransformationMethod(new PasswordTransformationMethod());
                     c_password.setTransformationMethod(new PasswordTransformationMethod());
                 }
+            }
+        });
+
+        nav_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ChooseUser.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

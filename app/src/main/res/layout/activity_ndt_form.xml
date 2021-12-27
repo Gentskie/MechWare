@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.143" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/menu_btn2"
         android:layout_width="38dp"
         android:layout_height="38dp"
@@ -31,7 +31,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.04"
-        app:srcCompat="@drawable/hamburger_icon" />
+        android:background="@drawable/icon_back"
+        android:backgroundTint="@color/maroon" />
 
     <TextView
         android:id="@+id/textView13"

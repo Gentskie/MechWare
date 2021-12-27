@@ -3,10 +3,12 @@ package com.example.mechware.ViewRecords;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +39,8 @@ public class view_ndt_records extends AppCompatActivity {
     String item_id;
     String parent_ref;
     String action_type;
+
+    ImageButton menu_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +160,27 @@ public class view_ndt_records extends AppCompatActivity {
                 Toast.makeText(view_ndt_records.this, "NDT Record has been updated!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        menu_btn = findViewById(R.id.menu_btn2);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), view_records.class);
+                intent.putExtra("user_type", user_type);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+    }
+
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), view_records.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
     }
 
     public void setRecord(){

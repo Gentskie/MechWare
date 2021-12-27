@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -192,6 +193,7 @@ public class view_engine_registered_owner_records extends AppCompatActivity impl
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
         switch(item.getItemId()) {
             case R.id.nav_engine_record:
+                drawerLayout.closeDrawer(Gravity.LEFT, false);
                 user_type = getIntent().getStringExtra("user_type");
                 item_id = getIntent().getStringExtra("item_id");
                 parent_ref = getIntent().getStringExtra("parent_ref");
@@ -203,7 +205,6 @@ public class view_engine_registered_owner_records extends AppCompatActivity impl
                 intent.putExtra("parent_ref", parent_ref);
                 intent.putExtra("action_type", action_type);
                 startActivity(intent);
-                finish();
                 break;
 
             case R.id.nav_engine_description:
@@ -211,6 +212,7 @@ public class view_engine_registered_owner_records extends AppCompatActivity impl
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         if (snapshot.hasChild("Description_of_Inspection")) {
+                            drawerLayout.closeDrawer(Gravity.LEFT, false);
                             user_type = getIntent().getStringExtra("user_type");
                             item_id = getIntent().getStringExtra("item_id");
                             parent_ref = getIntent().getStringExtra("parent_ref");
@@ -222,7 +224,6 @@ public class view_engine_registered_owner_records extends AppCompatActivity impl
                             intent.putExtra("parent_ref", parent_ref);
                             intent.putExtra("action_type", action_type);
                             startActivity(intent);
-                            finish();
                         } else {
                             Toast.makeText(view_engine_registered_owner_records.this, "This Engine Record doesn't have Description of Inspection Record~", Toast.LENGTH_SHORT).show();
                             return;
@@ -238,6 +239,7 @@ public class view_engine_registered_owner_records extends AppCompatActivity impl
             case R.id.nav_home_page:
                 user_type  = getIntent().getStringExtra("user_type");
 
+                drawerLayout.closeDrawer(Gravity.LEFT, false);
 
                 Intent intentHomePage = new Intent(getApplicationContext(), home_page.class);
                 intentHomePage.putExtra("user_type", user_type);

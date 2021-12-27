@@ -1,7 +1,11 @@
 package com.example.mechware;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,24 +14,32 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.StyleSpan;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mechware.ViewRecords.view_records;
+import com.google.android.material.internal.NavigationMenu;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.annotations.NotNull;
 
-public class home_page extends AppCompatActivity {
+public class home_page extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    TextView bold_text, back_layout;
+    TextView back_layout, toolbar_label;
     ImageView logbook_btn, ndt_btn, pitot_btn, view_records_btn;
     CardView card_view;
     Button aircraft_btn, propeller_btn, engine_btn;
 
-    ImageView menu_btn;
-
     String user_type;
+
+    //Navigation menu variables
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
+    Toolbar toolbar;
+    boolean navigationStateOpen = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,28 +47,38 @@ public class home_page extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         user_type = getIntent().getStringExtra("user_type");
-        //temporary logout button
-        menu_btn = findViewById(R.id.menu_btn);
-        menu_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getApplicationContext(), ChooseUser.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-
-        // changing lorem text to bold
-        bold_text = (TextView) findViewById(R.id.bold_txt);
-        String text = "Lorem Impsum";
-        Spannable string = new SpannableString(text);
-        StyleSpan bold = new StyleSpan(Typeface.BOLD);
-        string.setSpan(bold, 0, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        bold_text.setText(string);
 
         card_view = (CardView) findViewById(R.id.card_view);
         back_layout = (TextView) findViewById(R.id.back_layout);
+
+        toolbar_label = findViewById(R.id.toolbar_label);
+
+        toolbar_label.setText("Home Page");
+
+        //Navigation Menu
+        drawerLayout = findViewById(R.id.parent);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        navigationView.bringToFront();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_open, R.string.nav_close) {
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                navigationStateOpen = false;
+            }
+
+            public void onDrawerOpened(View view) {
+                super.onDrawerOpened(view);
+                navigationStateOpen = true;
+            }
+        };
+
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+
 
         // setting cardview and back_layout invisible
         card_view.setVisibility(View.INVISIBLE);
@@ -144,5 +166,29 @@ public class home_page extends AppCompatActivity {
             }
         });
 
+    }
+
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        return;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.nav_profile:
+                //change this to profile view
+                Intent profile = new Intent(getApplicationContext(), home_page.class);
+                startActivity(profile);
+                finish();
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent chooseUser = new Intent(getApplicationContext(), ChooseUser.class);
+                startActivity(chooseUser);
+                finish();
+                break;
+        }
+        return true;
     }
 }

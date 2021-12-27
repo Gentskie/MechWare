@@ -3,10 +3,12 @@ package com.example.mechware.ViewRecords;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.mechware.Helper.PitotHelper;
 import com.example.mechware.R;
+import com.example.mechware.home_page;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,6 +44,8 @@ public class view_pitot_records extends AppCompatActivity {
     String item_id;
     String parent_ref;
     String action_type;
+
+    ImageButton menu_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -201,8 +206,28 @@ public class view_pitot_records extends AppCompatActivity {
                 Toast.makeText(view_pitot_records.this, "Pitot Static Record has been updated!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        menu_btn = findViewById(R.id.menu_btn2);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), view_records.class);
+                intent.putExtra("user_type", user_type);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), view_records.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
+    }
     public void setRecord(){
         pitotIDRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +41,7 @@ public class aircraft_logbook extends AppCompatActivity {
 
     TextView textView6;
     Button aircraft_record_btn, form_1_btn, description_btn, reference_btn, airworthiness_btn, mandatory_btn, equipment_btn;
-    ImageView menu_btn;
+    ImageButton menu_btn;
 
     TextInputLayout dropdownLayout;
 
@@ -71,6 +72,7 @@ public class aircraft_logbook extends AppCompatActivity {
         rootNode = FirebaseDatabase.getInstance();
         aircraftRef = rootNode.getReference("aircraft_records");
 
+        list_of_items.clear();
         setUpDropdown();
 
         //initialize select aircraft dialog
@@ -86,15 +88,16 @@ public class aircraft_logbook extends AppCompatActivity {
 
         // adding action to Image View
         // menu_btn
-        menu_btn = (ImageView) findViewById(R.id.menu_btn);
+        menu_btn = findViewById(R.id.menu_btn);
         menu_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent pass = new Intent(getApplicationContext(),home_page.class);
+                pass.putExtra("user_type", user_type);
                 startActivity(pass);
+                finish();
             }
         });
-
 
         // adding action to buttons
         // Aircraft Records
@@ -154,8 +157,16 @@ public class aircraft_logbook extends AppCompatActivity {
         });
     }
 
-    public void dropdownDialogFunction(Class FormClass){
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), home_page.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
+    }
 
+    public void dropdownDialogFunction(Class FormClass){
         //initialize pop up dialog
         dropdown_dialog.setContentView(R.layout.dropdown_dialog_layout);
         confirm = dropdown_dialog.findViewById(R.id.btn_confirm);
@@ -164,6 +175,8 @@ public class aircraft_logbook extends AppCompatActivity {
 
         dropdownLayout = dropdown_dialog.findViewById(R.id.dropdownLayout);
         dropdownLayout.setHint("Select an Aircraft");
+
+        dropdown_input.setAdapter(null);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.drop_down, al_records);
         dropdown_input.setAdapter(adapter);
@@ -180,6 +193,7 @@ public class aircraft_logbook extends AppCompatActivity {
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dropdown_dialog.dismiss();
                         Intent pass = new Intent(getApplicationContext(), FormClass);
                         pass.putExtra("user_type", user_type);
                         pass.putExtra("aircraft_id", ac_id);

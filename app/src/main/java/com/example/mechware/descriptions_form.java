@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.mechware.Helper.AircraftSubHelper.DescriptionHelper;
@@ -28,6 +29,8 @@ public class descriptions_form extends AppCompatActivity {
 
     String user_type;
     String aircraft_id;
+
+    ImageButton menu_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +93,27 @@ public class descriptions_form extends AppCompatActivity {
                 description_editText.setText("");
             }
         });
+
+        menu_btn = findViewById(R.id.menu_btn2);
+        menu_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), aircraft_logbook.class);
+                intent.putExtra("user_type", user_type);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
+    //for Back Button ng Cellphone
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(getApplicationContext(), aircraft_logbook.class);
+        intent.putExtra("user_type", user_type);
+        startActivity(intent);
+        finish();
+    }
     //Hide soft keyboard when touched the outside of the edit text.
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
