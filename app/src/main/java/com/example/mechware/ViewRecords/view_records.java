@@ -7,9 +7,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.HorizontalScrollView;
@@ -41,21 +46,19 @@ import java.util.List;
 
 public class view_records extends AppCompatActivity {
 
-    ImageView search_btn;
     EditText search_editText;
     HorizontalScrollView log_records_form;
     Button log_book_btn, pitot_static_btn, ndt_btn, aircraft_record_btn;
     Button engine_record_btn, propeller_record_btn;
 
-    boolean search = false;
     boolean pitot_form = false, ndt_form = false, log = false;
     boolean aircraft_records = false, engine_records = false, propeller_records = false;
 
     TextView view_label;
     ConstraintLayout recyclerViewLayout;
-    List<ViewRecordsHelper> viewRecordsHelperList;
+    ArrayList<ViewRecordsHelper> viewRecordsHelperList;
     RecyclerView forms_items;
-    RecyclerView.Adapter mAdapter;
+    RecyclerView.Adapter mAdapter = new ViewRecordsAdapter(viewRecordsHelperList);
     LinearLayoutManager mLayoutManager;
     
     FirebaseDatabase rootNode;
@@ -74,7 +77,6 @@ public class view_records extends AppCompatActivity {
         user_type = getIntent().getStringExtra("user_type");
 
         // initialization of Image view
-        search_btn = (ImageView) findViewById(R.id.search_btn);
 
         menu_btn = findViewById(R.id.menu_btn2);
         menu_btn.setOnClickListener(new View.OnClickListener() {
@@ -84,25 +86,6 @@ public class view_records extends AppCompatActivity {
                 intent.putExtra("user_type", user_type);
                 startActivity(intent);
                 finish();
-            }
-        });
-
-        // initialization of search edit text
-        search_editText = (EditText) findViewById(R.id.search_editText);
-        search_editText.setVisibility(View.GONE);
-
-        // adding action to Image View
-        search_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(search == false){
-                    search_editText.setVisibility(View.VISIBLE);
-                    search = true;
-                }
-                else if(search == true){
-                    search_editText.setVisibility(View.GONE);
-                    search = false;
-                }
             }
         });
 
@@ -116,7 +99,6 @@ public class view_records extends AppCompatActivity {
         ndt_btn = (Button) findViewById(R.id.ndt_btn);
         pitot_static_btn = (Button) findViewById(R.id.pitot_static_btn);
 
-
         //Initialize Recycler View
         viewRecordsHelperList = new ArrayList<>();
         forms_items = findViewById(R.id.recycler_view_forms_item);
@@ -126,7 +108,6 @@ public class view_records extends AppCompatActivity {
         //Initialize Firebase Database and others
         rootNode = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
-
 
 
         // adding action to aircraft record
@@ -449,6 +430,40 @@ public class view_records extends AppCompatActivity {
                 }
             }
         });
+
+        // initialization of search edit text
+        search_editText = (EditText) findViewById(R.id.search_editText);
+        search_editText.setHint("Search");
+
+        search_editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) { }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+    }
+
+    public void filter(String text){
+        ArrayList<ViewRecordsHelper> filteredList = new ArrayList<>();
+
+        for (ViewRecordsHelper item : viewRecordsHelperList){
+            if(item.getLabel().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(item);
+            }
+        }
+
+        mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
+        mAdapter = new ViewRecordsAdapter(filteredList);
+        forms_items.setLayoutManager(mLayoutManager);
+        forms_items.setAdapter(mAdapter);
     }
 
     //for Back Button ng Cellphone
@@ -458,6 +473,30 @@ public class view_records extends AppCompatActivity {
         intent.putExtra("user_type", user_type);
         startActivity(intent);
         finish();
+    }
+
+    //Hide soft keyboard when touched the outside of the edit text.
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        View view = getCurrentFocus();
+        boolean ret = super.dispatchTouchEvent(event);
+
+        if (view instanceof EditText) {
+            View w = getCurrentFocus();
+            int scrcoords[] = new int[2];
+            w.getLocationOnScreen(scrcoords);
+            float x = event.getRawX() + w.getLeft() - scrcoords[0];
+            float y = event.getRawY() + w.getTop() - scrcoords[1];
+
+            if (event.getAction() == MotionEvent.ACTION_UP
+                    && (x < w.getLeft() || x >= w.getRight()
+                    || y < w.getTop() || y > w.getBottom()) ) {
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getWindow().getCurrentFocus().getWindowToken(), 0);
+                w.clearFocus();
+            }
+        }
+        return ret;
     }
 
 }

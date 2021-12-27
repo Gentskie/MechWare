@@ -17,19 +17,14 @@ import com.example.mechware.ViewRecords.view_engine_records;
 import com.example.mechware.ViewRecords.view_ndt_records;
 import com.example.mechware.ViewRecords.view_pitot_records;
 import com.example.mechware.ViewRecords.view_propeller_records;
-import com.example.mechware.aircraft_form;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ViewRecordsAdapter extends RecyclerView.Adapter<ViewRecordsAdapter.ViewRecordsHolder>{
 
-    private List<ViewRecordsHelper> viewRecordsHelper;
+    private ArrayList<ViewRecordsHelper> viewRecordsHelper;
 
     public static class ViewRecordsHolder extends RecyclerView.ViewHolder{
 
@@ -46,9 +41,10 @@ public class ViewRecordsAdapter extends RecyclerView.Adapter<ViewRecordsAdapter.
             view = itemView.findViewById(R.id.view_btn);
 
         }
+
     }
 
-    public ViewRecordsAdapter(List<ViewRecordsHelper> viewRecordsHelper){
+    public ViewRecordsAdapter(ArrayList<ViewRecordsHelper> viewRecordsHelper){
         this.viewRecordsHelper = viewRecordsHelper;
     }
 
@@ -200,4 +196,7 @@ public class ViewRecordsAdapter extends RecyclerView.Adapter<ViewRecordsAdapter.
     public int getItemCount() {
         return viewRecordsHelper.size();
     }
+
+
+
 }
