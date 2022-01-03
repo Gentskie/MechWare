@@ -21,10 +21,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mechware.ViewRecords.view_records;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.internal.NavigationMenu;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
+import com.squareup.picasso.Picasso;
 
 public class home_page extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -40,6 +47,12 @@ public class home_page extends AppCompatActivity implements NavigationView.OnNav
     NavigationView navigationView;
     Toolbar toolbar;
     boolean navigationStateOpen = false;
+
+    ShapeableImageView profile_picture;
+
+    FirebaseDatabase rootNode;
+    DatabaseReference usersRef, userTypeRef, userIDRef;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +92,32 @@ public class home_page extends AppCompatActivity implements NavigationView.OnNav
 
         navigationView.setNavigationItemSelectedListener(this);
 
+        //Firebase Init
+        rootNode = FirebaseDatabase.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        String uuid = mAuth.getCurrentUser().getUid();
+
+        usersRef = rootNode.getReference("users");
+        userTypeRef = usersRef.child(user_type);
+        userIDRef = userTypeRef.child(uuid);
+
+        //Set Profile Picture of Navigation Header
+        View header = navigationView.getHeaderView(0);
+        profile_picture = header.findViewById(R.id.profile_picture);
+        userIDRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                if(snapshot.hasChild("profile_picture")){
+                    String image = snapshot.child("profile_picture").getValue().toString();
+                    Picasso.get().load(image).into(profile_picture);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
 
         // setting cardview and back_layout invisible
         card_view.setVisibility(View.INVISIBLE);
@@ -178,7 +217,6 @@ public class home_page extends AppCompatActivity implements NavigationView.OnNav
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.nav_profile:
-                //change this to profile view
                 Intent profile = new Intent(getApplicationContext(), Profile.class);
                 profile.putExtra("user_type", user_type);
                 startActivity(profile);
