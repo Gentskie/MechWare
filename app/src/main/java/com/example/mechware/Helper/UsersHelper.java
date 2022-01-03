@@ -2,16 +2,18 @@ package com.example.mechware.Helper;
 
 public class UsersHelper {
 
-    public String fullname, email, contact_number, password;
+    public String fullname, email, contact_number, license, address, password;
 
     public UsersHelper() {
     }
 
-    public UsersHelper(String fullname, String email, String contact_number, String password) {
+    public UsersHelper(String fullname, String email, String contact_number, String password, String license, String address) {
         this.fullname = fullname;
         this.email = email;
         this.contact_number = contact_number;
         this.password = password;
+        this.license = license;
+        this.address = address;
     }
 
     public String getFullname() {
@@ -44,5 +46,21 @@ public class UsersHelper {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

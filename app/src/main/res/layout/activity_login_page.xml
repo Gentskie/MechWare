@@ -71,7 +71,7 @@
             android:id="@+id/password_editTxt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/text_coners"
+            android:background="@drawable/text_corners"
             android:inputType="textPassword"
             android:paddingLeft="15dp" />
 
@@ -110,7 +110,7 @@
             android:id="@+id/email_editTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_coners"
+            android:background="@drawable/text_corners"
             android:inputType="textPersonName"
             android:paddingLeft="15dp" />
 

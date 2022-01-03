@@ -179,9 +179,11 @@ public class home_page extends AppCompatActivity implements NavigationView.OnNav
         switch(item.getItemId()){
             case R.id.nav_profile:
                 //change this to profile view
-                Intent profile = new Intent(getApplicationContext(), home_page.class);
+                Intent profile = new Intent(getApplicationContext(), Profile.class);
+                profile.putExtra("user_type", user_type);
                 startActivity(profile);
                 finish();
+                break;
             case R.id.nav_logout:
                 FirebaseAuth.getInstance().signOut();
                 Intent chooseUser = new Intent(getApplicationContext(), ChooseUser.class);

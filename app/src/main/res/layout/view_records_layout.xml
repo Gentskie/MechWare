@@ -67,7 +67,7 @@
             android:id="@+id/search_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_coners"
+            android:background="@drawable/text_corners"
             android:padding="10dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
