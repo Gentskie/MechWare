@@ -5,23 +5,35 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ProfileFragment.OtherFrag"
-    android:background="@drawable/rounded_corners">
+    android:background="@drawable/rounded_corners"
+    android:id="@+id/parent">
+
+    <TextView
+        android:id="@+id/license_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="License Number: "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/license_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/license_label"
         app:startIconDrawable="@drawable/icon_shield_star"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:ems="10"
-        app:startIconTint="@color/maroon"
-        android:hint="License">
+        app:startIconTint="@color/maroon">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/license_input"
@@ -33,21 +45,32 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/address_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:text="Address (Optional): "
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/license_layout" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/address_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/license_layout"
+        app:layout_constraintTop_toBottomOf="@+id/address_label"
         app:startIconDrawable="@drawable/icon_home"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:ems="10"
-        app:startIconTint="@color/maroon"
-        android:hint="Address (Optional)">
+        app:startIconTint="@color/maroon">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/address_input"

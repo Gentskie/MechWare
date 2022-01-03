@@ -4,12 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mechware.Helper.UsersHelper;
@@ -31,6 +33,8 @@ public class OtherFrag extends Fragment {
 
     public String user_type;
 
+    TextView license_label, address_label;
+    ConstraintLayout parent;
     TextInputLayout license_layout, address_layout;
     AppCompatButton restore_btn, save_btn;
 
@@ -63,6 +67,8 @@ public class OtherFrag extends Fragment {
         //Edit Text init
         license_layout = rootView.findViewById(R.id.license_layout);
         address_layout = rootView.findViewById(R.id.address_layout);
+        license_label = rootView.findViewById(R.id.license_label);
+        address_label = rootView.findViewById(R.id.address_label);
 
         //Button init
         restore_btn = rootView.findViewById(R.id.restore_btn);
@@ -75,6 +81,12 @@ public class OtherFrag extends Fragment {
         usersRef = rootNode.getReference("users");
         userTypeRef = usersRef.child(user_type);
         userIDRef = userTypeRef.child(uuid);
+
+        //if user is mechanic show license number edit text
+        if(!(user_type.equals("mechanic"))){
+            license_layout.setVisibility(View.GONE);
+            license_label.setVisibility(View.GONE);
+        }
 
         //get current users Data
         userIDRef.addListenerForSingleValueEvent(new ValueEventListener() {

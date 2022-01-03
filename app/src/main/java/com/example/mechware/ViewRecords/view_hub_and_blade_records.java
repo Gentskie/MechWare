@@ -20,10 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mechware.Helper.PropellerRecordHelper;
 import com.example.mechware.Helper.PropellerSubHelper.HubAndBladeHelper;
 import com.example.mechware.R;
-import com.example.mechware.home_page;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,8 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
-
-import java.util.HashMap;
 
 public class view_hub_and_blade_records extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -214,12 +210,12 @@ public class view_hub_and_blade_records extends AppCompatActivity implements Nav
                 startActivity(intent);
                 break;
 
-            case R.id.nav_home_page:
+            case R.id.nav_view_records:
                 user_type  = getIntent().getStringExtra("user_type");
 
                 drawerLayout.closeDrawer(Gravity.LEFT, false);
 
-                Intent intentHomePage = new Intent(getApplicationContext(), home_page.class);
+                Intent intentHomePage = new Intent(getApplicationContext(), view_records.class);
                 intentHomePage.putExtra("user_type", user_type);
                 startActivity(intentHomePage);
                 finish();

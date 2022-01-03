@@ -15,11 +15,12 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mechware.Helper.AircraftSubHelper.ReferenceHelper;
 import com.example.mechware.R;
-import com.example.mechware.home_page;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +31,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.annotations.NotNull;
 
 public class view_reference_records extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    ImageView menu_btn2;
+    TextView textView13;
 
     EditText  date_editText, total_time_in_service_editText, reference_editText;
     Button restore_btn, submit_btn;
@@ -106,6 +110,12 @@ public class view_reference_records extends AppCompatActivity implements Navigat
         // initialization of Buttons
         restore_btn = (Button) findViewById(R.id.clear_btn);
         submit_btn = (Button) findViewById(R.id.next_btn);
+
+        menu_btn2 = findViewById(R.id.menu_btn2);
+        textView13 = findViewById(R.id.textView13);
+
+        menu_btn2.setVisibility(View.GONE);
+        textView13.setVisibility(View.GONE);
 
         restore_btn.setText("RESTORE DATA");
 
@@ -333,11 +343,11 @@ public class view_reference_records extends AppCompatActivity implements Navigat
                     }
                 });
                 break;
-            case R.id.nav_home_page:
+            case R.id.nav_view_records:
                 user_type  = getIntent().getStringExtra("user_type");
 
 
-                Intent intentHomePage = new Intent(getApplicationContext(), home_page.class);
+                Intent intentHomePage = new Intent(getApplicationContext(), view_records.class);
                 intentHomePage.putExtra("user_type", user_type);
                 startActivity(intentHomePage);
                 finish();

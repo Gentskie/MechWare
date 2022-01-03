@@ -20,12 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mechware.Helper.AircraftRecordHelper;
-import com.example.mechware.Helper.AircraftSubHelper.EngineCIHelper;
-import com.example.mechware.Helper.AircraftSubHelper.PropellerCIHelper;
 import com.example.mechware.Helper.EngineRecordHelper;
 import com.example.mechware.R;
-import com.example.mechware.home_page;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -287,12 +283,12 @@ public class view_engine_records extends AppCompatActivity implements Navigation
                     }
                 });
                 break;
-            case R.id.nav_home_page:
+            case R.id.nav_view_records:
                 user_type  = getIntent().getStringExtra("user_type");
 
                 drawerLayout.closeDrawer(Gravity.LEFT, false);
 
-                Intent intent = new Intent(getApplicationContext(), home_page.class);
+                Intent intent = new Intent(getApplicationContext(), view_records.class);
                 intent.putExtra("user_type", user_type);
                 startActivity(intent);
                 finish();

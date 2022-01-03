@@ -4,14 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,8 +24,6 @@ import com.example.mechware.Helper.AircraftRecordHelper;
 import com.example.mechware.Helper.AircraftSubHelper.EngineCIHelper;
 import com.example.mechware.Helper.AircraftSubHelper.PropellerCIHelper;
 import com.example.mechware.R;
-import com.example.mechware.aircraft_form;
-import com.example.mechware.home_page;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -490,11 +486,11 @@ public class view_aircraft_records extends AppCompatActivity implements Navigati
                     }
                 });
                 break;
-            case R.id.nav_home_page:
+            case R.id.nav_view_records:
                 user_type  = getIntent().getStringExtra("user_type");
 
                 drawerLayout.closeDrawer(Gravity.LEFT, false);
-                Intent intent = new Intent(getApplicationContext(), home_page.class);
+                Intent intent = new Intent(getApplicationContext(), view_records.class);
                 intent.putExtra("user_type", user_type);
                 startActivity(intent);
                 finish();

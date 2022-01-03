@@ -105,7 +105,7 @@ public class Signup_form extends AppCompatActivity {
                     if(password.getText().toString().isEmpty() || c_password.getText().toString().isEmpty()){
                         Toast.makeText(Signup_form.this, "PLEASE ENTER YOUR PASSWORD", Toast.LENGTH_LONG).show();
                     }
-                    else if(password.getText().length() != 8 || c_password.getText().toString().length() != 8){
+                    else if(password.getText().length() < 8 || c_password.getText().toString().length() < 8){
                         Toast.makeText(Signup_form.this, "Password must be 8+ characters", Toast.LENGTH_LONG).show();
                     }
                     else{

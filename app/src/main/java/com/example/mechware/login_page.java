@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +46,7 @@ public class login_page extends AppCompatActivity {
     String user_type;
     String user_id;
 
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +65,6 @@ public class login_page extends AppCompatActivity {
         rootNode = FirebaseDatabase.getInstance();
         userRef = rootNode.getReference("users");
 
-
         user_type = getIntent().getStringExtra("user_type");
 
         userLabel = findViewById(R.id.userLabel);
@@ -74,6 +75,9 @@ public class login_page extends AppCompatActivity {
             userLabel.setText("OWNER");
 
         }
+
+        progressBar = findViewById(R.id.progress_bar);
+
 
         input_email.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -134,6 +138,8 @@ public class login_page extends AppCompatActivity {
             return;
         }
 
+        progressBar.setVisibility(View.VISIBLE);
+
         mAuth.signInWithEmailAndPassword(userEmail, userPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {
@@ -165,11 +171,11 @@ public class login_page extends AppCompatActivity {
                         @Override
                         public void onCancelled(@NonNull @NotNull DatabaseError error) { }
                     });
-                    //progress bar visibility here
+                    progressBar.setVisibility(View.GONE);
                 }
                 else {
                     Toast.makeText(login_page.this, "LOGIN FAILED / INVALID USERNAME OR PASSWORD", Toast.LENGTH_LONG).show();
-                    //progress bar visibility here
+                    progressBar.setVisibility(View.GONE);
                     return;
                 }
             }
