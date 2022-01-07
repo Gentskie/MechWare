@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.mechware.Helper.DropdownHelper;
 import com.example.mechware.Helper.PropellerRecordHelper;
@@ -117,7 +118,10 @@ public class propeller_logbook extends AppCompatActivity {
     }
 
     public void dropdownDialogFunction(Class FormClass){
-
+        if(list_of_items.size() == 0){
+            Toast.makeText(this, "No Propeller Records to select", Toast.LENGTH_SHORT).show();
+            return;
+        }
         //initialize pop up dialog
         dropdown_dialog.setContentView(R.layout.dropdown_dialog_layout);
         confirm = dropdown_dialog.findViewById(R.id.btn_confirm);
